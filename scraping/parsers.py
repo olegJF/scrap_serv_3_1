@@ -63,10 +63,12 @@ def rabota(url, city=None, language=None):
                     for tr in tr_lst:
                         div = tr.find('div',  attrs={'class': 'card-body'})
                         if div:
-                            title = div.find('p',
+                            title = div.find('h2',
                                              attrs={'class': 'card-title'})
                             href = title.a['href']
-                            content = div.p.text
+                            content_div = div.find(
+                                'div',  attrs={'class': 'card-description'})
+                            content = content_div.text
                             company = 'No name'
                             p = div.find('p', attrs={'class': 'company-name'})
                             if p:
